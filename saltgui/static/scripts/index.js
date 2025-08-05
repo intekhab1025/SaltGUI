@@ -2,7 +2,31 @@
 
 /* istanbul ignore file */
 import {Router} from "./Router.js";
-window.addEventListener("load", () => new Router());
+
+window.addEventListener("load", () => {
+  new Router();
+  
+  // Initialize keyboard shortcuts for themes
+  document.addEventListener("keydown", (e) => {
+    // Ctrl+Shift+T to cycle themes
+    if (e.ctrlKey && e.shiftKey && e.key === "T") {
+      e.preventDefault();
+      const themeManager = getThemeManager();
+      if (themeManager) {
+        themeManager.cycleTheme();
+      }
+    }
+    
+    // Ctrl+Shift+D to toggle light/dark
+    if (e.ctrlKey && e.shiftKey && e.key === "D") {
+      e.preventDefault();
+      const themeManager = getThemeManager();
+      if (themeManager) {
+        themeManager.toggleLightDark();
+      }
+    }
+  });
+});
 
 /* eslint-disable func-names */
 // Make sure the errors are shown during regression testing

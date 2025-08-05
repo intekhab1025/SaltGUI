@@ -14,19 +14,20 @@ body {
 
 @media not print {
   body {
-    background-color: #263238;
+    background-color: var(--bg-secondary, #263238);
   }
 }
 
 header {
-  border-top: 2px solid #4caf50;
-  background-color: white;
+  border-top: 2px solid var(--brand-primary, #4caf50);
+  background-color: var(--bg-header, white);
   margin-top: 0;
+  position: relative;
 }
 
 .logo {
   cursor: pointer;
-  color: #4caf50;
+  color: var(--brand-primary, #4caf50);
   font-size: 30px;
   font-weight: normal;
   display: inline-block;
@@ -58,11 +59,11 @@ header {
 }
 
 .docu:hover {
-  color: #4caf50;
+  color: var(--brand-primary, #4caf50);
 }
 
 h1 {
-  color: #4caf50;
+  color: var(--brand-primary, #4caf50);
   font-weight: lighter;
   font-size: 20px;
   margin: 0 10px 0 0;
@@ -75,7 +76,8 @@ h1 {
 }
 
 .panel {
-  background-color: white;
+  background-color: var(--bg-panel, white);
+  color: var(--text-primary, #212529);
   padding: 20px;
   border-radius: 1px;
 

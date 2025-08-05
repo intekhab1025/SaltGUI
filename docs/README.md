@@ -25,6 +25,7 @@ We suggest to upgrade the SaltStack installation when you are still using a vers
 ## Features
 - Simple setup without the need to add a database
 - Login via PAM or any other supported authentication by Salt
+- **Dark mode and theming support** with light, dark, auto, and high-contrast themes
 - View minions and easily copy IPs
 - Run state.highstate for a particular minion or all
 - View the seven most recent jobs run on Salt
@@ -45,6 +46,7 @@ We suggest to upgrade the SaltStack installation when you are still using a vers
 - Match status of minions against reference list
 - Keyboard control for top-level navigation
 - Keyboard control to apply templates
+- **Theme switching with keyboard shortcuts** (Ctrl+Shift+T to cycle, Ctrl+Shift+D to toggle light/dark)
 - Choose between live info and cached info for grains/pillar
 - View details of orchestrations and allow to start them
 
@@ -193,6 +195,53 @@ With `local-utctime`, the local date and time are shown. Additionally, the UTC t
 In all cases, a tooltip is added to a date+time field that shows the full representation of the date and time in both the local timezone and in UTC.
 
 When using very old browsers, the required date/time functions may not be present. In that case SaltGUI reverts to simply displaying the reported time from the Salt system. The tooltip is then not shown.
+
+
+## Themes and Appearance
+
+SaltGUI supports multiple visual themes to improve usability and reduce eye strain. The theming system uses CSS custom properties and automatically adapts to user preferences.
+
+### Available Themes
+
+- **Light**: Traditional light theme with white backgrounds
+- **Dark**: Dark theme with reduced brightness for low-light environments  
+- **Auto**: Automatically switches between light and dark based on system preference
+- **High Contrast**: High contrast theme for accessibility
+
+### Theme Controls
+
+**Theme Toggle Button**: Click the theme button in the top-right corner of the header to access theme options.
+
+**Keyboard Shortcuts**:
+- `Ctrl+Shift+T`: Cycle through all available themes
+- `Ctrl+Shift+D`: Toggle between light and dark themes quickly
+
+### Configuration
+
+Theme preferences are automatically saved in the browser's localStorage and will persist across sessions.
+
+You can set the default theme in the configuration:
+
+```javascript
+// In saltgui/static/scripts/config.js
+const config = {
+  "THEME_ENABLED": true,
+  "DEFAULT_THEME": "auto", // "light", "dark", "auto", "high-contrast"
+  "THEME_PERSIST": true,   // Save theme preference in localStorage
+  "THEME_FOLLOW_SYSTEM": true // Auto theme follows system preference
+};
+```
+
+### Accessibility
+
+The high-contrast theme provides enhanced visibility for users with visual impairments:
+- Maximum contrast between text and backgrounds
+- Clear border definitions
+- Bright accent colors for important elements
+
+### Browser Support
+
+The theming system works with all modern browsers that support CSS custom properties (CSS variables). For older browsers, the interface will fall back to the default light theme.
 
 
 ## Templates
